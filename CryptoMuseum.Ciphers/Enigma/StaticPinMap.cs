@@ -16,15 +16,8 @@ namespace CryptoMuseum.Ciphers.Enigma
         /// <exception cref="ArgumentNullException"></exception>
         protected StaticPinMap(string map) : base(map)
         {
-            if (map.Where((c, idx) =>
-                {
-                    var c2 = Letters[idx];
-                    var idx2 = map.IndexOf(c2);
-                    var cx = Letters[idx2];
-                    return c != cx;
-                })
-                .Any())
-                throw new ArgumentException("map must reflect bi-directional pair wire mapping", nameof(map));
+            if (map.Where((c, idx) => c != Letters[map.IndexOf(Letters[idx])]).Any())
+                throw new ArgumentException("Value must reflect bi-directional pair wire mapping", nameof(map));
         }
 
         /// <summary>
