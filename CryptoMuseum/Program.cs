@@ -16,9 +16,6 @@ namespace CryptoMuseum
             var encrypted = enigma.Crypt("HelloWorld".ToUpper());
             enigma.Reset();
             var decrypted = enigma.Crypt(encrypted.ToUpper());
-
-
-
         }
     }
 }
