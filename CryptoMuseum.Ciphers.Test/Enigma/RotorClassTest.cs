@@ -36,7 +36,7 @@ namespace CryptoMuseum.Ciphers.Test.Enigma
             var initPosition = rotor.GetPosition();
             rotor.Rotate();
             var currentPosition = rotor.GetPosition();
-            Assert.Equal(initPosition, currentPosition);
+            Assert.NotEqual(initPosition, currentPosition);
         }
     }
 }
