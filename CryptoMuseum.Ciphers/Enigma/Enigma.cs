@@ -21,15 +21,42 @@ namespace CryptoMuseum.Ciphers.Enigma
                 rotor.Reset();
             }
         }
-
+        
         public char PressKey(char c)
+        {
+            var pin = GetKeyPin(c);
+            pin = ApplyPlugboard(pin);
+            pin = ApplyRotorsForth(pin);
+            pin = ApplyReflector(pin);
+            pin = ApplyRotorsBack(pin);
+            pin = ApplyPlugboard(pin);
+
+            var letter = PinMap.Letters[pin];
+
+            Debug.WriteLine($"= Light up letter: {letter}");
+            Debug.Flush();
+
+            return letter;
+        }
+        
+        private static int GetKeyPin(char c)
         {
             var pin = PinMap.Letters.IndexOf(c);
             Debug.WriteLine($">>> Pressed key: {c}, keyboard pin: {pin}");
+            return pin;
+        }
 
-            pin = _plugBoard.EncryptPin(pin);
-            Debug.WriteLine($"Plugboard translation to pin: {pin}");
-            
+        private int ApplyPlugboard(int pin)
+        {
+            var encryptedPin = _plugBoard.EncryptPin(pin);
+            Debug.WriteLine($"Plugboard translation to pin: {encryptedPin}");
+            return encryptedPin;
+        }
+
+        private int ApplyRotorsForth(int pin)
+        {
+            var encryptedPin = pin;
+
             // TODO eval rotation all at once and do all rotations together
 
             var shouldRotateNext = true;
@@ -44,32 +71,34 @@ namespace CryptoMuseum.Ciphers.Enigma
                     _rotors[i].Rotate();
 
                     Debug.WriteLine("Rotates");
-                    Debug.WriteLineIf(shouldRotateNext,"Next rotor should rotate too.");
+                    Debug.WriteLineIf(shouldRotateNext, "Next rotor should rotate too.");
                 }
 
-                pin = _rotors[i].EncryptPinForth(pin);
-                Debug.WriteLine($"Rotor translation to pin: {pin}");
+                encryptedPin = _rotors[i].EncryptPinForth(encryptedPin);
+                Debug.WriteLine($"Rotor translation to pin: {encryptedPin}");
                 Debug.Unindent();
             }
 
-            pin = _reflector.EncryptPin(pin);
+            return encryptedPin;
+        }
+
+        private int ApplyReflector(int pin)
+        {
+            var encryptedPin = _reflector.EncryptPin(pin);
             Debug.WriteLine($"Reflector translation to pin: {pin}");
-            
+            return encryptedPin;
+        }
+
+        private int ApplyRotorsBack(int pin)
+        {
+            var encryptedPin = pin;
             for (var i = _rotors.Length - 1; i >= 0; i--)
             {
-                pin = _rotors[i].EncryptPinBack(pin);
-                Debug.WriteLine($"Rotor[{i}] translation to pin: {pin}");
+                encryptedPin = _rotors[i].EncryptPinBack(encryptedPin);
+                Debug.WriteLine($"Rotor[{i}] translation to pin: {encryptedPin}");
             }
 
-            pin = _plugBoard.EncryptPin(pin);
-            Debug.WriteLine($"Plugboard translation to pin: {pin}");
-
-            var letter = PinMap.Letters[pin];
-            Debug.WriteLine($"= Light up letter: {letter}");
-
-            Debug.Flush();
-
-            return letter;
+            return encryptedPin;
         }
     }
 }
