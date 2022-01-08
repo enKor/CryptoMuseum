@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Ciphers\Ciphers.csproj" />
+    <ProjectReference Include="..\CryptoMuseum.Ciphers\CryptoMuseum.Ciphers.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,7 +1,7 @@
-using Ciphers.Enigma;
+using CryptoMuseum.Ciphers.Enigma;
 using Xunit;
 
-namespace Ciphers.Test.Enigma
+namespace CryptoMuseum.Ciphers.Test.Enigma
 {
     public class PinMapClassTest
     {

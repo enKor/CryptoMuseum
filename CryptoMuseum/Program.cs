@@ -1,5 +1,5 @@
-﻿using Ciphers.Enigma;
-using Ciphers.Extensions;
+﻿using CryptoMuseum.Ciphers.Enigma;
+using CryptoMuseum.Ciphers.Extensions;
 
 namespace CryptoMuseum
 {

@@ -1,4 +1,4 @@
-﻿namespace Ciphers.Enigma
+﻿namespace CryptoMuseum.Ciphers.Enigma
 {
     public abstract class StaticPinMap : PinMap
     {

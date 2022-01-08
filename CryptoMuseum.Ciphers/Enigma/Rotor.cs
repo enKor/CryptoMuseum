@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Ciphers.Enigma
+namespace CryptoMuseum.Ciphers.Enigma
 {
     public class Rotor : PinMap
     {

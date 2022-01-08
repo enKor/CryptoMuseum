@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace Ciphers.Extensions
+namespace CryptoMuseum.Ciphers.Extensions
 {
     public static class EnigmaExtensions
     {
