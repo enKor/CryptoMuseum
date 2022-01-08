@@ -3,8 +3,14 @@ using System.Linq;
 
 namespace CryptoMuseum.Ciphers.Enigma
 {
+    /// <summary>
+    /// Base class for any mapping (wiring) components of Enigma
+    /// </summary>
     public abstract class PinMap
     {
+        /// <summary>
+        /// Characters set to be mapped
+        /// </summary>
         public const string Letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
         protected readonly string Map;
@@ -13,6 +19,8 @@ namespace CryptoMuseum.Ciphers.Enigma
         /// Reflects A-Z mapping
         /// </summary>
         /// <param name="map">A-Z map translation</param>
+        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
         protected PinMap(string map)
         {
             if (string.IsNullOrEmpty(map))
@@ -31,6 +39,13 @@ namespace CryptoMuseum.Ciphers.Enigma
             Map = map;
         }
 
+        /// <summary>
+        /// Get pin wiring translation
+        /// </summary>
+        /// <param name="input">input wires</param>
+        /// <param name="output">output wires</param>
+        /// <param name="inputPin">input pin</param>
+        /// <returns>translated pin</returns>
         protected internal static int GetOutputPin(string input, string output, int inputPin)
         {
             var c = output[inputPin];

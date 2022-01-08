@@ -4,6 +4,12 @@ namespace CryptoMuseum.Ciphers.Extensions
 {
     public static class EnigmaExtensions
     {
+        /// <summary>
+        /// Encrypts/decrypts text on Enigma
+        /// </summary>
+        /// <param name="enigma">Enigma machine</param>
+        /// <param name="text">Text to be encrypted/decrypted</param>
+        /// <returns>encrypted/decrypted text</returns>
         public static string Crypt(this Enigma.Enigma enigma, string text)
         {
             var sb = new StringBuilder(text.Length);

@@ -3,18 +3,30 @@ using System.Diagnostics;
 
 namespace CryptoMuseum.Ciphers.Enigma
 {
+    /// <summary>
+    /// Enigma - cipher machine
+    /// </summary>
     public class Enigma
     {
         private readonly PlugBoard _plugBoard;
         private readonly Rotor[] _rotors;
         private readonly Reflector _reflector = Reflector.Default;
 
+        /// <summary>
+        /// Create Enigma machine by setting plugboard wiring and rotors
+        /// </summary>
+        /// <param name="plugBoard">plugboard wiring</param>
+        /// <param name="rotors">rotors - usually used 3 or more</param>
+        /// <exception cref="ArgumentNullException"></exception>
         public Enigma(PlugBoard plugBoard, params Rotor[] rotors)
         {
             _plugBoard = plugBoard ?? throw new ArgumentNullException(nameof(plugBoard));
             _rotors = rotors ?? throw new ArgumentNullException(nameof(rotors));
         }
 
+        /// <summary>
+        /// Resets all rotors to starting position
+        /// </summary>
         public void Reset()
         {
             foreach (var rotor in _rotors)
@@ -22,7 +34,12 @@ namespace CryptoMuseum.Ciphers.Enigma
                 rotor.Reset();
             }
         }
-        
+
+        /// <summary>
+        /// Press key on Enigma keyboard to be encrypted/decrypted
+        /// </summary>
+        /// <param name="c">key character</param>
+        /// <returns>encrypted/decrypted character</returns>
         public char PressKey(char c)
         {
             var pin = GetKeyPin(c);
