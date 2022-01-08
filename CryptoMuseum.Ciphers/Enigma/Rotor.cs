@@ -1,20 +1,27 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace CryptoMuseum.Ciphers.Enigma
 {
     public class Rotor : PinMap
     {
         private readonly int[] _notches;
-        private int _rotation; // TODO to prop and remove GetPosition()
+        private int _rotation;
         private readonly int _startPosition;
 
         public Rotor(string map, int[] notches, int rotation) : base(map)
         {
-            _notches = notches;
+            if (rotation < 1 || rotation > map.Length)
+                throw new ArgumentOutOfRangeException(nameof(rotation),
+                    $"Value must fit into map parameter length range (1-{map.Length})");
+
+            if (notches.Min() < 1 || notches.Max() > map.Length)
+                throw new ArgumentOutOfRangeException(nameof(notches),
+                    $"Values must fit into map parameter length range (1-{map.Length})");
+
+            _notches = notches.Distinct().ToArray();
             _rotation = rotation;
             _startPosition = rotation;
-
-            //TODO params checks
         }
 
         public void Reset() => _rotation = _startPosition;

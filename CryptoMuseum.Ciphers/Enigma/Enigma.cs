@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 
 namespace CryptoMuseum.Ciphers.Enigma
 {
@@ -10,8 +11,8 @@ namespace CryptoMuseum.Ciphers.Enigma
 
         public Enigma(PlugBoard plugBoard, params Rotor[] rotors)
         {
-            _plugBoard = plugBoard;
-            _rotors = rotors;
+            _plugBoard = plugBoard ?? throw new ArgumentNullException(nameof(plugBoard));
+            _rotors = rotors ?? throw new ArgumentNullException(nameof(rotors));
         }
 
         public void Reset()
@@ -56,8 +57,6 @@ namespace CryptoMuseum.Ciphers.Enigma
         private int ApplyRotorsForth(int pin)
         {
             var encryptedPin = pin;
-
-            // TODO eval rotation all at once and do all rotations together
 
             var shouldRotateNext = true;
             for (var i = 0; i < _rotors.Length; i++)
