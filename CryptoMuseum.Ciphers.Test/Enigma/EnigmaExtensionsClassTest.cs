@@ -1,11 +1,31 @@
+using System;
+using Xunit;
+using CryptoMuseum.Ciphers.Extensions;
+
 namespace CryptoMuseum.Ciphers.Test.Enigma
 {
-    public class EnigmaExtensionsClassTest
+    public class EnigmaExtensionsClassTest : IDisposable
     {
-        // TODO
-        //[Theory]
-        public void Crypt_MethodTest()
+        private Ciphers.Enigma.Enigma _enigma;
+
+        public EnigmaExtensionsClassTest()
         {
+            _enigma = InitHelper.CreateEnigma();
+        }
+
+        [Theory]
+        [InlineData("HELLOWORLD", "TZXXLOEVHP")]
+        [InlineData("TZXXLOEVHP", "HELLOWORLD")]
+        public void Crypt_MethodTest(string input, string expectedOutput)
+        {
+            var result = _enigma.Crypt(input);
+
+            Assert.Equal(expectedOutput, result);
+        }
+
+        public void Dispose()
+        {
+            _enigma = null;
         }
     }
 }

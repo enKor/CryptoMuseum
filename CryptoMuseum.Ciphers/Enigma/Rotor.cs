@@ -5,7 +5,7 @@ namespace CryptoMuseum.Ciphers.Enigma
     public class Rotor : PinMap
     {
         private readonly int[] _notches;
-        private int _rotation;
+        private int _rotation; // TODO to prop and remove GetPosition()
         private readonly int _startPosition;
 
         public Rotor(string map, int[] notches, int rotation) : base(map)
@@ -26,6 +26,8 @@ namespace CryptoMuseum.Ciphers.Enigma
                 ? 1
                 : _rotation + 1;
 
+        public int GetPosition() => _rotation;
+
         private int GetPin(int pin)
         {
             var shiftedPin = pin + _rotation - 1;
@@ -34,10 +36,8 @@ namespace CryptoMuseum.Ciphers.Enigma
                 : shiftedPin;
         }
 
-        public int EncryptPinForth(int inputPin) => GetOutputPin(Letters, Map, GetPin(inputPin));
+        internal int EncryptPinForth(int inputPin) => GetOutputPin(Letters, Map, GetPin(inputPin));
 
-        public int EncryptPinBack(int inputPin) => GetOutputPin(Map, Letters, GetPin(inputPin));
-
-
+        internal int EncryptPinBack(int inputPin) => GetOutputPin(Map, Letters, GetPin(inputPin));
     }
 }

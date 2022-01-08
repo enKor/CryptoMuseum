@@ -10,7 +10,7 @@ namespace CryptoMuseum.Ciphers.Extensions
             
             foreach (var c in text)
             {
-                sb.Append(enigma.PressLetter(c));
+                sb.Append(enigma.PressKey(c));
             }
 
             return sb.ToString();

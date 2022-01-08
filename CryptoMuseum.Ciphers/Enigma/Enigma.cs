@@ -20,7 +20,7 @@
             }
         }
 
-        public char PressLetter(char c)
+        public char PressKey(char c)
         {
             var pin = PinMap.Letters.IndexOf(c);
             pin = _plugBoard.EncryptPin(pin);
