@@ -1,10 +1,10 @@
 ﻿namespace CryptoMuseum.Ciphers.Enigma
 {
-    public class Reflector : StaticPinMap
+    internal class Reflector : StaticPinMap
     {
         public static readonly Reflector Default = new("YRUHQSLDPXNGOKMIEBFZCWVJAT");
 
-        public Reflector(string map) : base(map)
+        private Reflector(string map) : base(map)
         {
 
         }
