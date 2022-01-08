@@ -6,7 +6,7 @@ namespace CryptoMuseum.Ciphers.Test.Enigma
     public class RotorClassTest
     {
         [Fact]
-        public void Reset_MethodTest()
+        public void Reset()
         {
             var rotor = InitHelper.CreateRotor();
             var initPosition = rotor.GetPosition();
@@ -21,7 +21,7 @@ namespace CryptoMuseum.Ciphers.Test.Enigma
         [InlineData(new[] { 1, 7 }, 7, true)]
         [InlineData(new[] { 1, 7 }, 6, false)]
         [InlineData(new[] { 1 }, 2, false)]
-        public void ShouldRotateNextRotor_MethodTest(int[] notches, int rotation, bool expectedResult)
+        public void ShouldRotateNextRotor(int[] notches, int rotation, bool expectedResult)
         {
             var rotor = new Rotor("JGDQOXUSCAMIFRVTPNEWKBLZYH", notches, rotation);
             var result = rotor.ShouldRotateNextRotor();
@@ -30,7 +30,7 @@ namespace CryptoMuseum.Ciphers.Test.Enigma
         }
 
         [Fact]
-        public void Rotate_MethodTest()
+        public void Rotate()
         {
             var rotor = InitHelper.CreateRotor();
             var initPosition = rotor.GetPosition();

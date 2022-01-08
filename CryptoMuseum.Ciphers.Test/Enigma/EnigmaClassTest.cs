@@ -21,7 +21,7 @@ namespace CryptoMuseum.Ciphers.Test.Enigma
         [InlineData('G', 'B')]
         [InlineData('M', 'A')]
         [InlineData('A', 'M')]
-        public void PressKey_MethodTest(char input, char expectedOutput)
+        public void PressKey(char input, char expectedOutput)
         {
             var result = _enigma.PressKey(input);
 
@@ -29,7 +29,7 @@ namespace CryptoMuseum.Ciphers.Test.Enigma
         }
 
         [Fact]
-        public void Reset_MethodTest()
+        public void Reset()
         {
             var try1 = _enigma.Crypt(TestString);
             _enigma.Reset();
@@ -39,7 +39,7 @@ namespace CryptoMuseum.Ciphers.Test.Enigma
         }
 
         [Fact]
-        public void NoReset_MethodTest()
+        public void NoReset()
         {
             var try1 = _enigma.Crypt(TestString);
             var try2 = _enigma.Crypt(TestString);

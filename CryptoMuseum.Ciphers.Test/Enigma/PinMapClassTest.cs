@@ -9,7 +9,7 @@ namespace CryptoMuseum.Ciphers.Test.Enigma
         [InlineData(PinMap.Letters, "JGDQOXUSCAMIFRVTPNEWKBLZYH", 0, 9)]
         [InlineData(PinMap.Letters, "JGDQOXUSCAMIFRVTPNEWKBLZYH", 23, 25)]
         [InlineData("JGDQOXUSCAMIFRVTPNEWKBLZYH", PinMap.Letters, 25, 23)]
-        public void GetOutputPin_MethodTest(string input, string output, int inputPin, int expectedOutputPin)
+        public void GetOutputPin(string input, string output, int inputPin, int expectedOutputPin)
         {
             var outputPin = PinMap.GetOutputPin(input, output, inputPin);
             Assert.Equal(expectedOutputPin, outputPin);
