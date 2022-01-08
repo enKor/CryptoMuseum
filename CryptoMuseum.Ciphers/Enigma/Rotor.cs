@@ -28,16 +28,30 @@ namespace CryptoMuseum.Ciphers.Enigma
 
         public int GetPosition() => _rotation;
 
-        private int GetPin(int pin)
+        private int AddRotation(int inputPin)
         {
-            var shiftedPin = pin + _rotation - 1;
-            return shiftedPin >= Letters.Length 
-                ? shiftedPin - Letters.Length 
+            var shiftedPin = inputPin + _rotation - 1;
+            return shiftedPin >= Letters.Length
+                ? shiftedPin - Letters.Length
                 : shiftedPin;
         }
 
-        internal int EncryptPinForth(int inputPin) => GetOutputPin(Letters, Map, GetPin(inputPin));
+        private int SubtractRotation(int inputPin)
+        {
+            var shiftedPin = inputPin - _rotation + 1;
+            return shiftedPin < 0
+                ? shiftedPin + Letters.Length
+                : shiftedPin;
+        }
 
-        internal int EncryptPinBack(int inputPin) => GetOutputPin(Map, Letters, GetPin(inputPin));
+        internal int EncryptPinForth(int inputPin) => EncryptPin(inputPin, Letters, Map);
+        internal int EncryptPinBack(int inputPin) => EncryptPin(inputPin, Map, Letters);
+        private int EncryptPin(int inputPin, string input, string output)
+        {
+            var rotatedPin = AddRotation(inputPin);
+            var outputPinWithRotation = GetOutputPin(input, output, rotatedPin);
+            var outputPinWithOutRotation = SubtractRotation(outputPinWithRotation);
+            return outputPinWithOutRotation;
+        }
     }
 }

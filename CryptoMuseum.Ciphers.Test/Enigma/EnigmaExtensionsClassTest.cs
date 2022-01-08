@@ -14,8 +14,8 @@ namespace CryptoMuseum.Ciphers.Test.Enigma
         }
 
         [Theory]
-        [InlineData("HELLOWORLD", "TZXXLOEVHP")]
-        [InlineData("TZXXLOEVHP", "HELLOWORLD")]
+        [InlineData("HELLOWORLD", "ZVWSTEFPPI")]
+        [InlineData("ZVWSTEFPPI", "HELLOWORLD")]
         public void Crypt_MethodTest(string input, string expectedOutput)
         {
             var result = _enigma.Crypt(input);

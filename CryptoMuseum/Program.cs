@@ -1,4 +1,5 @@
-﻿using CryptoMuseum.Ciphers.Enigma;
+﻿using System;
+using CryptoMuseum.Ciphers.Enigma;
 using CryptoMuseum.Ciphers.Extensions;
 
 namespace CryptoMuseum
@@ -8,14 +9,17 @@ namespace CryptoMuseum
         private static void Main(string[] args)
         {
             var slowRotor = new Rotor("JGDQOXUSCAMIFRVTPNEWKBLZYH", new[] { 17 /*Q*/ }, 1);
-            var midRotor = new Rotor("NTZPSFBOKMWRCJDIVLAEYUXHGQ", new [] { 5 /*E*/ }, 1);
-            var fastRotor = new Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO", new [] { 22 /*V*/ }, 1);
+            var midRotor = new Rotor("NTZPSFBOKMWRCJDIVLAEYUXHGQ", new[] { 5 /*E*/ }, 1);
+            var fastRotor = new Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO", new[] { 22 /*V*/ }, 1);
 
             var enigma = new Enigma(PlugBoard.WithNoMapping, fastRotor, midRotor, slowRotor);
 
-            var encrypted = enigma.Crypt("HelloWorld".ToUpper());
+            var encrypted = enigma.Crypt("ENIGMA");
             enigma.Reset();
-            var decrypted = enigma.Crypt(encrypted.ToUpper());
+            var decrypted = enigma.Crypt(encrypted);
+
+            Console.WriteLine(encrypted);
+            Console.WriteLine(decrypted);
         }
     }
 }

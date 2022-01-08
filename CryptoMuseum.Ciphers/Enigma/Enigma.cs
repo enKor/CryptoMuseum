@@ -30,6 +30,8 @@ namespace CryptoMuseum.Ciphers.Enigma
             pin = _plugBoard.EncryptPin(pin);
             Debug.WriteLine($"Plugboard translation to pin: {pin}");
             
+            // TODO eval rotation all at once and do all rotations together
+
             var shouldRotateNext = true;
             for (var i = 0; i < _rotors.Length; i++)
             {

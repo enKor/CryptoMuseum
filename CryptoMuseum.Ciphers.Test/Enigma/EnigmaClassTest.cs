@@ -8,20 +8,19 @@ namespace CryptoMuseum.Ciphers.Test.Enigma
     {
         private Ciphers.Enigma.Enigma _enigma;
         private const string TestString = "ASDHGFLJKFDHUIGERBBVXMYJGNMRFSDHIF";
-        
+
         public EnigmaClassTest()
         {
             _enigma = InitHelper.CreateEnigma();
         }
 
         [Theory]
-        [InlineData('E','R')]
-        [InlineData('N','Y')]
-        [InlineData('I','E')]
-        [InlineData('G','M')]
-        [InlineData('M','L')]
-        [InlineData('A','K')]
-        [InlineData('K','A')]
+        [InlineData('E', 'C')]
+        [InlineData('N', 'T')]
+        [InlineData('I', 'R')]
+        [InlineData('G', 'B')]
+        [InlineData('M', 'A')]
+        [InlineData('A', 'M')]
         public void PressKey_MethodTest(char input, char expectedOutput)
         {
             var result = _enigma.PressKey(input);
