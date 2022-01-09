@@ -1,4 +1,3 @@
 # CryptoMuseum
 
-## Enigma
-- https://en.wikipedia.org/wiki/Enigma_machine
+- Enigma: https://en.wikipedia.org/wiki/Enigma_machine
