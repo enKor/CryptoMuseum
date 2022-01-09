@@ -10,11 +10,11 @@ namespace CryptoMuseum.Ciphers.Vigenere
         /// </summary>
         private const string Letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-        private readonly char[,] Map;
+        private readonly char[,] _map;
 
         public VigenereCipher()
         {
-            Map = CreateMap();
+            _map = CreateMap();
         }
 
         public string Encode(string input, string key)
@@ -26,7 +26,7 @@ namespace CryptoMuseum.Ciphers.Vigenere
                 var letter = input[position];
                 var idxOfLetterToEncrypt = Letters.IndexOf(letter);
                 var idxOfKeyLetter = Letters.IndexOf(key[position % key.Length]);
-                sb.Append(Map[idxOfLetterToEncrypt, idxOfKeyLetter]);
+                sb.Append(_map[idxOfLetterToEncrypt, idxOfKeyLetter]);
             }
 
             return sb.ToString();
@@ -41,8 +41,8 @@ namespace CryptoMuseum.Ciphers.Vigenere
                 var letter = input[position];
                 var idxOfKeyLetter = Letters.IndexOf(key[position % key.Length]);
                 var idxOfDecryptedLetter = Enumerable
-                    .Range(0, Map.GetLength(1))
-                    .Single(x => Map[idxOfKeyLetter, x] == letter);
+                    .Range(0, _map.GetLength(1))
+                    .Single(x => _map[idxOfKeyLetter, x] == letter);
                 sb.Append(Letters[idxOfDecryptedLetter]);
             }
 
