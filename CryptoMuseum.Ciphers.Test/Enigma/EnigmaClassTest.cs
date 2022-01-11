@@ -1,5 +1,5 @@
 using System;
-using CryptoMuseum.Ciphers.Extensions;
+using CryptoMuseum.Ciphers.Enigma;
 using Xunit;
 
 namespace CryptoMuseum.Ciphers.Test.Enigma

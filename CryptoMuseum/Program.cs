@@ -1,6 +1,5 @@
 ﻿using System;
 using CryptoMuseum.Ciphers.Enigma;
-using CryptoMuseum.Ciphers.Extensions;
 using CryptoMuseum.Ciphers.Vigenere;
 
 namespace CryptoMuseum

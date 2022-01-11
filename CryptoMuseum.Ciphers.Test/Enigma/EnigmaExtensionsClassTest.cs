@@ -1,6 +1,6 @@
 using System;
+using CryptoMuseum.Ciphers.Enigma;
 using Xunit;
-using CryptoMuseum.Ciphers.Extensions;
 
 namespace CryptoMuseum.Ciphers.Test.Enigma
 {

@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace CryptoMuseum.Ciphers.Extensions
+namespace CryptoMuseum.Ciphers.Enigma
 {
     public static class EnigmaExtensions
     {
@@ -10,7 +10,7 @@ namespace CryptoMuseum.Ciphers.Extensions
         /// <param name="enigma">Enigma machine</param>
         /// <param name="text">Text to be encrypted/decrypted</param>
         /// <returns>encrypted/decrypted text</returns>
-        public static string Crypt(this Enigma.Enigma enigma, string text)
+        public static string Crypt(this Enigma enigma, string text)
         {
             var sb = new StringBuilder(text.Length);
             
