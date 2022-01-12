@@ -29,7 +29,10 @@ namespace CryptoMuseum
             var midRotor = new Rotor("NTZPSFBOKMWRCJDIVLAEYUXHGQ", new[] { 5 /*E*/ }, 1);
             var fastRotor = new Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO", new[] { 22 /*V*/ }, 1);
 
-            var enigma = new Enigma(PlugBoard.WithNoMapping, fastRotor, midRotor, slowRotor);
+            var enigma = new Enigma(
+                new Reflector("YRUHQSLDPXNGOKMIEBFZCWVJAT"),
+                PlugBoard.WithNoMapping, 
+                fastRotor, midRotor, slowRotor);
 
             var encrypted = enigma.Crypt("ENIGMA");
             enigma.Reset();
@@ -38,5 +41,7 @@ namespace CryptoMuseum
             Console.WriteLine(encrypted);
             Console.WriteLine(decrypted);
         }
+
+
     }
 }

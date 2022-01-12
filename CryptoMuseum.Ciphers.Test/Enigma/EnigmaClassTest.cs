@@ -6,12 +6,12 @@ namespace CryptoMuseum.Ciphers.Test.Enigma
 {
     public class EnigmaClassTest : IDisposable
     {
-        private Ciphers.Enigma.Enigma _enigma;
+        private IEnigma _enigma;
         private const string TestString = "ASDHGFLJKFDHUIGERBBVXMYJGNMRFSDHIF";
 
         public EnigmaClassTest()
         {
-            _enigma = InitHelper.CreateEnigma();
+            _enigma = InitHelper.CreateCustomEnigma();
         }
 
         [Theory]

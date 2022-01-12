@@ -6,11 +6,11 @@ namespace CryptoMuseum.Ciphers.Test.Enigma
 {
     public class EnigmaExtensionsClassTest : IDisposable
     {
-        private Ciphers.Enigma.Enigma _enigma;
+        private IEnigma _enigma;
 
         public EnigmaExtensionsClassTest()
         {
-            _enigma = InitHelper.CreateEnigma();
+            _enigma = InitHelper.CreateCustomEnigma();
         }
 
         [Theory]

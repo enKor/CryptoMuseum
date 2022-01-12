@@ -10,7 +10,7 @@ namespace CryptoMuseum.Ciphers.Enigma
         /// <param name="enigma">Enigma machine</param>
         /// <param name="text">Text to be encrypted/decrypted</param>
         /// <returns>encrypted/decrypted text</returns>
-        public static string Crypt(this Enigma enigma, string text)
+        public static string Crypt(this IEnigma enigma, string text)
         {
             var sb = new StringBuilder(text.Length);
             

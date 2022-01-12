@@ -3,7 +3,7 @@
 namespace CryptoMuseum.Ciphers.Enigma
 {
     /// <summary>
-    /// Plugboard is static component of Enigma
+    /// Plugboard is static component of Enigma aka ETW
     /// </summary>
     public class PlugBoard : StaticPinMap
     {

@@ -6,20 +6,22 @@ namespace CryptoMuseum.Ciphers.Enigma
     /// <summary>
     /// Enigma - cipher machine
     /// </summary>
-    public class Enigma
+    public class Enigma : IEnigma
     {
         private readonly PlugBoard _plugBoard;
         private readonly Rotor[] _rotors;
-        private readonly Reflector _reflector = Reflector.Default;
+        private readonly Reflector _reflector;
 
         /// <summary>
         /// Create Enigma machine by setting plugboard wiring and rotors
         /// </summary>
+        /// <param name="reflector">reflector wiring</param>
         /// <param name="plugBoard">plugboard wiring</param>
         /// <param name="rotors">rotors - usually used 3 or more</param>
         /// <exception cref="ArgumentNullException"></exception>
-        public Enigma(PlugBoard plugBoard, params Rotor[] rotors)
+        public Enigma(Reflector reflector, PlugBoard plugBoard, params Rotor[] rotors)
         {
+            _reflector = reflector;
             _plugBoard = plugBoard ?? throw new ArgumentNullException(nameof(plugBoard));
             _rotors = rotors ?? throw new ArgumentNullException(nameof(rotors));
         }
@@ -56,7 +58,7 @@ namespace CryptoMuseum.Ciphers.Enigma
 
             return letter;
         }
-        
+
         private static int GetKeyPin(char c)
         {
             var pin = PinMap.Letters.IndexOf(c);
