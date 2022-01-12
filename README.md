@@ -1,3 +1,6 @@
 # CryptoMuseum
 
-- Enigma: https://en.wikipedia.org/wiki/Enigma_machine
+![Codes & ciphers](https://survivaldispatch.com/wp-content/uploads/2021/03/09_Codes-and-Ciphers-title-image.jpg)
+
+- [Enigma](https://en.wikipedia.org/wiki/Enigma_machine)
+- [Vigenère cipher](https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher)
